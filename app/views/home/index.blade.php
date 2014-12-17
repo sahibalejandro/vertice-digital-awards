@@ -23,7 +23,7 @@
        data-participant-photo="{{ $participant->image('photo') }}"
        data-participant-name="{{{ $participant->name }}}">
 
-        <img class="img-circle" src="{{ $participant->image('photo') }}" alt="{{{ $participant->name }}}"/>
+        <img class="participant-photo img-circle" src="{{ $participant->image('photo') }}" alt="{{{ $participant->name }}}"/>
         <div class="participant-name">{{{ $participant->name }}}</div>
 
     </a><!-- a.participant -->

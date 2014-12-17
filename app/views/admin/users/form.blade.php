@@ -2,7 +2,7 @@
 <div class="form-group">
     {{ Form::label('name', 'Name:', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-3">
-        {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => 50]) }}
+        {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => 80, 'autofocus']) }}
     </div>
 </div>
 {{-- /Name Field --}}

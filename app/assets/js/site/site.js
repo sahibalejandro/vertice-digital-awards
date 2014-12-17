@@ -35,5 +35,19 @@ $(document).on('ready', function (e)
     });
     // End of: window on scroll
 
+    /*
+     * Disable submit buttons on form submit.
+     */
+    $('button[type=submit]').on('click', function (e)
+    {
+        var button = this;
+
+        setTimeout(function ()
+        {
+            button.disabled = true;
+        }, 100);
+    });
+    // End of: 'button[type=submit]' on click
+
 });
 // End of: $(document).on('ready', ...)

@@ -15,7 +15,7 @@
 @foreach ($participants as $participant)
 <div class="participant">
 
-    <img class="img-circle" src="{{ $participant->image('photo') }}" alt="{{{ $participant->name }}}"/>
+    <img class="participant-photo img-circle" src="{{ $participant->image('photo') }}" alt="{{{ $participant->name }}}"/>
 
     <div class="participant-votes">{{ $participant->votesToMe()->count() }}</div>
     

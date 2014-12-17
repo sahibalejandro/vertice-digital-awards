@@ -38,6 +38,12 @@
     }
 } // .participant
 
+.participant-photo,
+#modal-confirm-vote-photo {
+    width: 140px;
+    height: 140px;
+} // .participant-photo, #modal-confirm-vote-photo
+
 .participant-name {
     font-size: 1.3em;
     height: 2em;
