@@ -60,7 +60,7 @@ class LoginController extends \BaseController
 
         if (!$user)
         {
-            Flash::error("No encontramos a ningún participante con el correo {$username}@verticecom.com");
+            Flash::error("Ja! Ese email no está autorizado para participar.");
 
             return Redirect::back();
         }

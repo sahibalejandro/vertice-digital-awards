@@ -2,10 +2,11 @@
 
 @section('content')
     {{ Form::model($_resource, [
-        'url'    => $_url,
-        'method' => $_method,
-        'files'  => $_files,
-        'class'  => 'form-horizontal',
+        'url'          => $_url,
+        'method'       => $_method,
+        'files'        => $_files,
+        'class'        => 'form-horizontal',
+        'autocomplete' => 'off',
     ]) }}
     @include($_view)
     {{ Form::close() }}

@@ -9,7 +9,7 @@
     {{-- // Page Header --}}
 
     {{-- Login Form --}}
-    {{ Form::open(['route' => 'admin.login.store', 'class' => 'form-horizontal']) }}
+    {{ Form::open(['route' => 'admin.login.store', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
 
         {{-- User Field --}}
         <div class="form-group">

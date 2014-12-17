@@ -38,9 +38,9 @@ $(document).on('ready', function (e)
     /*
      * Disable submit buttons on form submit.
      */
-    $('button[type=submit]').on('click', function (e)
+    $('form').on('submit', function (e)
     {
-        var button = this;
+        var button = $(this).find('[type="submit"]').get(0);
 
         setTimeout(function ()
         {

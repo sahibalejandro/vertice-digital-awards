@@ -35,7 +35,6 @@
     text-align: center;
     position: relative;
     color: #444;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 
     .participant-photo {
         filter: grayscale(100%);
@@ -72,6 +71,7 @@
 .participant-name {
     font-size: 1.3em;
     height: 2em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 } // .participant-name
 
 .participant-votes {

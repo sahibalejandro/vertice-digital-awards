@@ -13,7 +13,7 @@
         <p>Para participar identificate con tu email de vértice.</p>
 
         {{-- Login Form --}}
-        {{ Form::open(['route' => 'login.store', 'class' => 'form-horizontal']) }}
+        {{ Form::open(['route' => 'login.store', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
             {{-- Username Field --}}
             <div class="form-group">
                 {{ Form::label('username', 'email:', ['class' => 'col-sm-2 control-label']) }}
