@@ -12,7 +12,7 @@
 <div class="form-group">
     {{ Form::label('current_image', 'Current image:', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-3">
-        <img src="{{ $category->image('photo', 'thumb') }}" alt="{{{ $category->name }}}"/>
+        <img src="{{ $category->image('image', 'thumb') }}" alt="{{{ $category->name }}}"/>
     </div>
 </div>
 {{-- /Current image Field --}}
@@ -20,9 +20,9 @@
 
 {{-- Image Field --}}
 <div class="form-group">
-    {{ Form::label('photo_file', 'Image:', ['class' => 'col-sm-2 control-label']) }}
+    {{ Form::label('image_file', 'Image:', ['class' => 'col-sm-2 control-label']) }}
     <div class="col-sm-3">
-        {{ Form::file('photo_file') }}
+        {{ Form::file('image_file') }}
     </div>
 </div>
 {{-- /Image Field --}}

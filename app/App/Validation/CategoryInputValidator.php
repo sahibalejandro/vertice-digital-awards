@@ -27,7 +27,7 @@ class CategoryInputValidator extends InputValidator
      */
     public function createMode()
     {
-        $this->rules['photo_file'] = 'required';
+        $this->rules['image_file'] = 'required';
 
         return parent::createMode();
     }
