@@ -26,10 +26,12 @@ class VotesRepository extends Repository
      */
     public function vote($userId, $categoryId, $participantId)
     {
-        return $this->create([
-            'user_id'        => $userId,
-            'category_id'    => $categoryId,
-            'participant_id' => $participantId,
-        ]);
+        $data = [
+            'user_id'       => $userId,
+            'category_id'   => $categoryId,
+            'voted_user_id' => $participantId,
+        ];
+
+        return $this->create($data);
     }
 }

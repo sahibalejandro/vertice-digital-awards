@@ -16,6 +16,6 @@ class Category extends ModelWithImages
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'image'];
 
 }

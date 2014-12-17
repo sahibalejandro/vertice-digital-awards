@@ -3,9 +3,9 @@
 class DatabaseSeeder extends Seeder {
 	protected $tables = [
 		'users',
-		'participants',
 		'categories',
-		'votes'
+		'votes',
+		'admins',
 	];
 
 	/**
@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('UsersTableSeeder');
 		$this->call('CategoriesTableSeeder');
-		$this->call('ParticipantsTableSeeder');
+		$this->call('AdminsTableSeeder');
 	}
 
 	private function truncate()

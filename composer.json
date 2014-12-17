@@ -9,9 +9,9 @@
 		"sahib/elegan": "~1.6",
 		"laracasts/presenter": "~0.1",
 		"laracasts/utilities": "~1.0",
-		"artdarek/oauth-4-laravel": "~1.0.5",
 		"rhumsaa/uuid": "~2.8",
-		"olliread/multiauth": "~3.3"
+		"ollieread/multiauth": "~3.3",
+		"guzzlehttp/guzzle": "~5.0"
 	},
 	"autoload": {
 		"classmap": [

@@ -1,18 +1,19 @@
 <?php namespace App\Models;
 
-use Eloquent;
+use App\Traits\ModelUuidTrait;
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Sahib\Elegan\Models\ModelWithImages;
 
 /**
  * Class User
  * @package App\Models
  */
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends ModelWithImages implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait;
+	use UserTrait, RemindableTrait, ModelUuidTrait;
 
 	/**
 	 * The database table used by the model.
@@ -33,15 +34,30 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
      */
-	protected $fillable = ['username'];
+	protected $fillable = ['username', 'photo', 'name'];
 
 	/**
-	 * Get user votes.
+	 * Votes to other users.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
 	public function votes()
 	{
 		return $this->hasMany('App\Models\Vote');
+	}
+
+	/**
+	 * Votes from other users to this user.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function votesToMe()
+	{
+		return $this->hasMany('App\Models\Vote', 'voted_user_id');
+	}
+
+	public function getEmailAttribute()
+	{
+		return "{$this->username}@verticecom.com";
 	}
 }

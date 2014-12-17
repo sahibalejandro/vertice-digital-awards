@@ -2,7 +2,7 @@
 
 @section('header')
 {{-- Page Header --}}
-<div class="category-header" style="background-image: url('{{ $category->image('photo') }}')">
+<div class="category-header" style="background-image: url('{{ $category->image('image') }}')">
     <div class="container">
         <div class="category-name">{{{ $category->name }}}</div>
     </div>

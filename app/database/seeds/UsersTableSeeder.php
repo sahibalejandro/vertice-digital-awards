@@ -11,10 +11,14 @@ class UsersTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 5) as $index)
+        foreach (range(1, 20) as $index)
         {
+            $username = $faker->userName;
+
             User::create([
-                'username' => $faker->email,
+                'username' => $username,
+                'name'     => $faker->name,
+                'photo'    => Str::slug($username) . '.jpg',
             ]);
         }
     }

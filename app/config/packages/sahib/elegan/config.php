@@ -3,7 +3,7 @@
 return [
     'Category' => [
         // An image.
-        'photo' => [
+        'image' => [
 
             // Mark this attribute as image.
             'is_image'     => true,
@@ -20,16 +20,16 @@ return [
                 // This is the default size for your image, the image
                 // will be adjusted to this size when it's uploaded.
                 // This value is always required.
-                'full'  => [1024, 768],
+                'full'  => [1920, 400],
 
                 // This is an alternative size.
                 // You can define here all sizes you want.
-                'thumb' => [150, 150],
+                'thumb' => [480, 100],
             ],
         ],
     ],
 
-    'Participant' => [
+    'User' => [
         // An image.
         'photo' => [
 
@@ -37,10 +37,10 @@ return [
             'is_image'     => true,
 
             // Path where to store the files.
-            'path'         => 'i/participants',
+            'path'         => 'i/users',
 
             // Default image to use if the original is missing.
-            'default_file' => 'participant.jpg',
+            'default_file' => 'user.jpg',
 
             // Alternative image sizes, to use with the method image().
             'image_sizes'  => [
@@ -48,11 +48,12 @@ return [
                 // This is the default size for your image, the image
                 // will be adjusted to this size when it's uploaded.
                 // This value is always required.
-                'full'  => [1024, 768],
+                'full'  => [280, 280],
 
                 // This is an alternative size.
                 // You can define here all sizes you want.
-                'thumb' => [150, 150],
+                'thumb' => [140, 140],
+                'micro' => [50, 50],
             ],
         ],
     ],

@@ -1,11 +1,11 @@
 <?php namespace App\Controllers;
 
+use App\Mail\UserMailer;
 use App\Repositories\UsersRepository;
 use Auth;
 use Flash;
 use Input;
 use OAuth;
-use OAuth\Common\Http\Exception\TokenResponseException;
 use Redirect;
 use View;
 
@@ -13,78 +13,95 @@ use View;
  * Class LoginController
  * @package App\Controllers
  */
-class LoginController extends \BaseController {
+class LoginController extends \BaseController
+{
 
-	/**
-	 * @var \OAuth\Common\Service\AbstractService
+    /**
+     * @var \OAuth\Common\Service\AbstractService
      */
-	protected $oauthService;
+    protected $oauthService;
 
-	/**
-	 * @var \App\Repositories\UsersRepository
-	 */
-	private $usersRepository;
-
-	/**
-	 * @param \App\Repositories\UsersRepository $usersRepository
+    /**
+     * @var \App\Repositories\UsersRepository
      */
-	public function __construct(UsersRepository $usersRepository)
-	{
-		$this->usersRepository = $usersRepository;
-		$this->oauthService = OAuth::consumer('Google', url('login/google'));
-	}
-
-	/**
-	 * Show the view to login with one oauth service.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		$oauthUrl = $this->oauthService->getAuthorizationUri();
-
-		return View::make('login.create')->withOauthUrl($oauthUrl);
-	}
-
-	/**
-	 * Handle the response from google oauth to login the user.
-	 *
-	 * @return \Illuminate\Http\RedirectResponse
+    private $usersRepository;
+    /**
+     * @var \App\Mail\UserMailer
      */
-	public function google()
-	{
-		$code = Input::get('code');
+    private $userMailer;
 
-		try
-		{
-			$token = $this->oauthService->requestAccessToken($code);
-
-			$userInfo = json_decode($this->oauthService->request('https://www.googleapis.com/oauth2/v1/userinfo'));
-
-			$this->loginUser($userInfo->email);
-
-			return Redirect::home();
-		} catch (TokenResponseException $e)
-		{
-			Flash::error('Hum... algo no funcionó, vuelve a intentarlo.');
-			return Redirect::route('login');
-		}
-	}
-
-	/**
-	 * Login a user.
-	 *
-	 * @param string $username
-	 *
-	 * @return \App\Models\User|static
+    /**
+     * @param \App\Repositories\UsersRepository $usersRepository
      */
-    private function loginUser($username)
-	{
-		$user = $this->usersRepository->findByUsernameOrCreate($username);
+    public function __construct(UsersRepository $usersRepository, UserMailer $userMailer)
+    {
+        $this->usersRepository = $usersRepository;
+        $this->userMailer = $userMailer;
+    }
 
-		Auth::login($user);
+    /**
+     * Show the view to login with one oauth service.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return View::make('login.create');
+    }
 
-		return $user;
-	}
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store()
+    {
+        $username = Input::get('username');
+
+        $user = $this->usersRepository->findByUsername($username);
+
+        if (!$user)
+        {
+            Flash::error("No encontramos a ningún participante con el correo {$username}@verticecom.com");
+
+            return Redirect::back();
+        }
+
+        $this->userMailer->sendAccessLink($user);
+
+        return Redirect::route('login.thanks');
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function thanks()
+    {
+        return View::make('login.thanks');
+    }
+
+    /**
+     * @param $uuid
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function attempt($uuid)
+    {
+        $user = $this->usersRepository->findByUuid($uuid);
+
+        if (!$user) Redirect::route('login');
+
+        Auth::user()->login($user, true);
+
+        return Redirect::home();
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy()
+    {
+        Auth::user()->logout();
+
+        return Redirect::home();
+    }
 
 }

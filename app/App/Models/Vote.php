@@ -13,5 +13,5 @@ class Vote extends Eloquent
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'category_id', 'participant_id'];
+    protected $fillable = ['user_id', 'category_id', 'voted_user_id'];
 }

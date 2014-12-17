@@ -1,7 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Repositories\CategoriesRepository;
-use App\Repositories\ParticipantsRepository;
+use App\Repositories\UsersRepository;
 use App\Repositories\VotesRepository;
 use Auth;
 use Flash;
@@ -20,23 +20,23 @@ class HomeController extends \BaseController
      */
     private $categoriesRepository;
     /**
-     * @var \App\Repositories\ParticipantsRepository
+     * @var \App\Repositories\usersRepository
      */
-    private $participantsRepository;
+    private $usersRepository;
     /**
      * @var \App\Repositories\VotesRepository
      */
     private $votesRepository;
 
     /**
-     * @param \App\Repositories\CategoriesRepository   $categoriesRepository
-     * @param \App\Repositories\ParticipantsRepository $participantsRepository
-     * @param \App\Repositories\VotesRepository        $votesRepository
+     * @param \App\Repositories\CategoriesRepository $categoriesRepository
+     * @param \App\Repositories\UsersRepository      $usersRepository
+     * @param \App\Repositories\VotesRepository      $votesRepository
      */
-    public function __construct(CategoriesRepository $categoriesRepository, ParticipantsRepository $participantsRepository, VotesRepository $votesRepository)
+    public function __construct(CategoriesRepository $categoriesRepository, UsersRepository $usersRepository, VotesRepository $votesRepository)
     {
         $this->categoriesRepository = $categoriesRepository;
-        $this->participantsRepository = $participantsRepository;
+        $this->usersRepository = $usersRepository;
         $this->votesRepository = $votesRepository;
     }
 
@@ -47,11 +47,14 @@ class HomeController extends \BaseController
      */
     public function index()
     {
-        $category = $this->categoriesRepository->availableCategoryForUser(Auth::user());
+        $category = $this->categoriesRepository->availableCategoryForUser(Auth::user()->user());
 
         if ( ! $category) return Redirect::route('home.thanks');
 
-        $participants = $this->participantsRepository->all();
+        $participants = $this->usersRepository->setUp(function ($q)
+        {
+            $q->orderBy('name');
+        })->all();
 
         return View::make('home.index')->with(compact('category', 'participants'));
     }
@@ -63,10 +66,10 @@ class HomeController extends \BaseController
      */
     public function vote()
     {
-        $participant = $this->participantsRepository->findByUuid(Input::get('participant_uuid'));
+        $participant = $this->usersRepository->findByUuid(Input::get('participant_uuid'));
         $category = $this->categoriesRepository->findByUuid(Input::get('category_uuid'));
 
-        $this->votesRepository->vote(Auth::id(), $category->id, $participant->id);
+        $this->votesRepository->vote(Auth::user()->id(), $category->id, $participant->id);
 
         Flash::success('Voto registrado.');
 
@@ -80,7 +83,7 @@ class HomeController extends \BaseController
      */
     public function thanks()
     {
-        $participants = $this->participantsRepository->all();
+        $participants = $this->usersRepository->all();
 
         return View::make('home.thanks')->withParticipants($participants);
     }

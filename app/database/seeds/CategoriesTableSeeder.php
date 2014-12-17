@@ -11,11 +11,13 @@ class CategoriesTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 10) as $index)
+        foreach (range(1, 5) as $index)
         {
+            $name = $faker->word;
+
             Category::create([
-                'name'  => $faker->word,
-                'photo' => 'category.jpg',
+                'name'  => $name,
+                'image' => Str::slug($name) . '-category.jpg',
             ]);
         }
     }

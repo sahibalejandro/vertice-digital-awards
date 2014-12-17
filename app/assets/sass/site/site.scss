@@ -1,12 +1,9 @@
 @import "mixins";
 
-.navbar {
-    margin-bottom: 0;
-} // .navbar
-
 .category-header {
     background-position: center bottom;
     height: 300px;
+    margin-top: -20px;
     margin-bottom: 1em;
     transition: background-position 50ms ease;
 } // .category-header

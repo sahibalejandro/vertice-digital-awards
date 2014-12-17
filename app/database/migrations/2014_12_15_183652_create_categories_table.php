@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration {
 			$table->increments('id');
 			$table->string('uuid', 36);
 			$table->string('name', 50);
-			$table->string('photo', 50);
+			$table->string('image', 50);
 			$table->timestamps();
 		});
 	}
