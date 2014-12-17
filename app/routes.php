@@ -47,7 +47,7 @@ Route::group(['before' => 'auth.admin', 'prefix' => 'admin'], function ()
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'App\Controllers\AdminDashboardController@index']);
 
     Route::resource('categories', 'App\Controllers\AdminCategoriesController');
-    Route::resource('participants', 'App\Controllers\AdminParticipantsController');
+    Route::resource('users', 'App\Controllers\AdminUsersController');
 
     Route::get('logout', ['as' => 'admin.login.destroy', 'uses' => 'App\Controllers\AdminLoginController@destroy']);
 });

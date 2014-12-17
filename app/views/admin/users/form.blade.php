@@ -7,12 +7,24 @@
 </div>
 {{-- /Name Field --}}
 
-@if ($participant)
+{{-- Username Field --}}
+<div class="form-group">
+    {{ Form::label('username', 'Username:', ['class' => 'col-sm-2 control-label']) }}
+    <div class="col-sm-4">
+        <div class="input-group">
+            {{ Form::text('username', null, ['class' => 'form-control', 'maxlength' => 50]) }}
+            <div class="input-group-addon">@verticecom.com</div>
+        </div>
+    </div>
+</div>
+{{-- /Username Field --}}
+
+@if ($user)
     {{-- Current image Field --}}
     <div class="form-group">
         {{ Form::label('current_image', 'Current image:', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-3">
-            <img src="{{ $participant->image('photo', 'thumb') }}" alt="{{{ $participant->name }}}"/>
+            <img src="{{ $user->image('photo', 'thumb') }}" alt="{{{ $user->name }}}"/>
         </div>
     </div>
     {{-- /Current image Field --}}
