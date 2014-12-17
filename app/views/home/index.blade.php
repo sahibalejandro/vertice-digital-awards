@@ -4,7 +4,10 @@
 {{-- Page Header --}}
 <div class="category-header" style="background-image: url('{{ $category->image('image') }}')">
     <div class="container">
-        <div class="category-name">{{{ $category->name }}}</div>
+        <div class="category-name">
+            <h3>La persona más</h3>
+            <h1>{{{ $category->name }}}</h1>
+        </div>
     </div>
 </div>
 {{-- // Page Header --}}
@@ -14,7 +17,7 @@
 
 
 <div class="alert alert-info">
-    Haz clic en la persona que creas adecuada para la categoría actual.
+    Vota por la persona más <strong>{{{ strtolower($category->name) }}}</strong>, <em>tu voto es anónimo</em>.
 </div>
 
 @foreach ($participants as $participant)

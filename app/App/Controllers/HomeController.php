@@ -53,7 +53,7 @@ class HomeController extends \BaseController
 
         $participants = $this->usersRepository->setUp(function ($q)
         {
-            $q->orderBy('name');
+            $q->orderBy('name')->where('id', '!=', Auth::user()->id());
         })->all();
 
         return View::make('home.index')->with(compact('category', 'participants'));

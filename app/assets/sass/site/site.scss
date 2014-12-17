@@ -9,10 +9,24 @@
 } // .category-header
 
 .category-name {
-    font-size: 4em;
     color: #ffffff;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.9);
-    margin-top: 2em;
+    margin-top: 7em;
+    display: inline-block;
+    background: rgba(0,0,0,0.5);
+    padding: 1em 5em 1em 2em;
+
+    h3 {
+        line-height: .7em;
+        margin: 0;
+    } // small
+
+    h1 {
+        line-height: 1em;
+        margin: 0;
+        font-size: 4.5em;
+    } // h1
+
 } // .category-name
 
 .participant {
