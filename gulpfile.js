@@ -70,7 +70,7 @@ gulp.task('copy.bootstrap.fonts', function ()
  */
 gulp.task('uglify', ['site.concat.js'], function ()
 {
-    return gulp.src(['public/js/admin.min.js', 'public/js/site.min.js'])
+    return gulp.src(['public/js/site.min.js'])
         .pipe(uglify())
         .pipe(gulp.dest('public/js'));
 }); // uglify
@@ -82,7 +82,7 @@ gulp.task('uglify', ['site.concat.js'], function ()
  */
 gulp.task('minify-css', ['site.concat.css'], function ()
 {
-    return gulp.src(['public/css/admin.min.css', 'public/css/site.min.css'])
+    return gulp.src(['public/css/site.min.css'])
         .pipe(minifyCss({keepSpecialComments: 0}))
         .pipe(gulp.dest('public/css'));
 }); // minify-css
