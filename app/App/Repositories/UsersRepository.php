@@ -29,4 +29,9 @@ class UsersRepository extends Repository
     {
         return $this->query()->whereUsername($username)->first();
     }
+
+    public function deserters()
+    {
+        return $this->query()->where('remember_token', '')->get();
+    }
 }

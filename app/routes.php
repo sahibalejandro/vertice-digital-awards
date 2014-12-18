@@ -57,6 +57,7 @@ Route::group(['before' => 'auth.admin', 'prefix' => 'admin'], function ()
 
     Route::resource('categories', 'App\Controllers\AdminCategoriesController');
     Route::resource('users', 'App\Controllers\AdminUsersController');
+    Route::resource('deserters', 'App\Controllers\AdminNotifyDesertersController');
 
     Route::get('logout', ['as' => 'admin.login.destroy', 'uses' => 'App\Controllers\AdminLoginController@destroy']);
 });
