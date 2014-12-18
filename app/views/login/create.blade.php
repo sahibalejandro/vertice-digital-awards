@@ -10,7 +10,7 @@
 
         <hr/>
 
-        <p>Para participar identificate con tu email de vértice.</p>
+        <p>Para participar identifícate con tu email de vértice.</p>
 
         {{-- Login Form --}}
         {{ Form::open(['route' => 'login.store', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
