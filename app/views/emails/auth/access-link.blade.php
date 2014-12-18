@@ -6,5 +6,5 @@
 
 <p>
     Este link es único y fue generado especialmente para ti con cálculos matemáticos
-    más aya de tu entendimiento, es tu llave y solo tú puedes usarlo ¡no lo muestres a nadie!
+    más allá de tu entendimiento, es tu llave y solo tú puedes usarlo ¡no lo muestres a nadie!
 </p>
