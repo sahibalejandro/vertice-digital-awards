@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->call('CategoriesTableSeeder');
 		$this->call('AdminsTableSeeder');
+		$this->call('VotesTableSeeder');
 	}
 
 	private function truncate()

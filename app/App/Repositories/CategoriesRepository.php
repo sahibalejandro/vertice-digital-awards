@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use App\Traits\FindByUuidTrait;
-use Illuminate\Database\Eloquent\Builder;
 use Sahib\Elegan\Repositories\Repository;
 
 /**

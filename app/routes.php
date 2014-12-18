@@ -1,5 +1,8 @@
 <?php
-
+/* -----------------------------------------------
+ * Public routes
+ * -----------------------------------------------
+ */
 Route::group(['before' => 'guest'], function ()
 {
     Route::get('login', ['as' => 'login', 'uses' => 'App\Controllers\LoginController@create']);
@@ -10,6 +13,12 @@ Route::group(['before' => 'guest'], function ()
 
 });
 
+Route::get('nadiesabenadiesupo', ['as' => 'nominees.index', 'uses' => 'App\Controllers\NomineesController@index']);
+
+/* -----------------------------------------------
+ * Privated Routes
+ * -----------------------------------------------
+ */
 Route::group(['before' => 'auth'], function ()
 {
     Route::get('logout', ['as' => 'login.destroy', 'uses' => 'App\Controllers\LoginController@destroy']);
@@ -51,5 +60,6 @@ Route::group(['before' => 'auth.admin', 'prefix' => 'admin'], function ()
 
     Route::get('logout', ['as' => 'admin.login.destroy', 'uses' => 'App\Controllers\AdminLoginController@destroy']);
 });
+
 
 

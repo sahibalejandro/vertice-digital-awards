@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 5) as $index)
+        foreach (range(1, 20) as $index)
         {
             $name = $faker->word;
 

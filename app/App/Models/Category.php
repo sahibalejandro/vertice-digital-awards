@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Repositories\NomineesRepository;
 use App\Traits\ModelUuidTrait;
 use Sahib\Elegan\Models\ModelWithImages;
 
@@ -9,6 +10,7 @@ use Sahib\Elegan\Models\ModelWithImages;
  */
 class Category extends ModelWithImages
 {
+
     use ModelUuidTrait;
 
     /**
@@ -17,5 +19,15 @@ class Category extends ModelWithImages
      * @var array
      */
     protected $fillable = ['name', 'image'];
+
+    /**
+     * Return the nominated users on this category.
+     *
+     * @return array(\App\Models\Nominated)
+     */
+    public function nominees()
+    {
+        return with(new NomineesRepository())->categoryNominees($this->id);
+    }
 
 }

@@ -87,3 +87,22 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
     opacity: 0.85;
 } // .participant-votes
+
+.nominees-category {
+    border-bottom: 2px solid #eee;
+} // .nominees-category
+
+.nominees {
+    padding: 5em 0;
+} // .nominees
+
+.nominated {
+    float: left;
+    width: 33.33%;
+    text-align: center;
+} // .nominated
+
+.nominated-photo {
+    width: 100px;
+    height: 100px;
+} // .nominated-photo
