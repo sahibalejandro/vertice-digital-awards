@@ -38,6 +38,7 @@ class NomineesRepository extends Repository
             ->whereCategoryId($categoryId)
             ->groupBy('voted_user_id')
             ->with('user')
-            ->get($columns);
+            ->get($columns)
+            ->shuffle();
     }
 }
