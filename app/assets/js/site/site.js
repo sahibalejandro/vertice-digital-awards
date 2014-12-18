@@ -20,22 +20,6 @@ $(document).on('ready', function (e)
     // End of: '.participant' on click
 
     /*
-     * Parallax FX on .category-header when the
-     * user scrolls the window.
-     */
-    var offset = 100; // Max pixels to scroll up the background.
-    var maxScroll = 351; // Scroll where the .category-header is not visible.
-
-    $(window).on('scroll', function (e)
-    {
-        var percent = Math.round(($(this).scrollTop() * 100) / maxScroll);
-        var px = Math.round((percent / 100) * offset) - offset;
-
-        $('.category-header').css('background-position', 'center ' + px + 'px');
-    });
-    // End of: window on scroll
-
-    /*
      * Disable submit buttons on form submit.
      */
     $('form').on('submit', function (e)
