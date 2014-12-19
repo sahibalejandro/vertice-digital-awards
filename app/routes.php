@@ -13,7 +13,7 @@ Route::group(['before' => 'guest'], function ()
 
 });
 
-Route::get('nadiesabenadiesupo', ['as' => 'nominees.index', 'uses' => 'App\Controllers\NomineesController@index']);
+Route::get('nominees', ['as' => 'nominees.index', 'uses' => 'App\Controllers\NomineesController@index']);
 
 /* -----------------------------------------------
  * Privated Routes
